@@ -49,6 +49,7 @@ async function handleRequest(request) {
   // Set cache control headers to cache on browser for 25 minutes
   response.headers.set('Cache-Control', 'max-age=1500');
   response.headers.set('foo', 'bar');
+  response.headers.set('foo-value', foo);
   return response;
 }
 
