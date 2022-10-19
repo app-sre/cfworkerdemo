@@ -5,33 +5,33 @@ async function handleRequest(request) {
   const url = new URL(request.url);
 
   path = url.pathname;
-  console.log(`path : $${path}`);
+  console.log(`path : ${path}`);
 
   hostPath = path.split(/^\/([\w.]+)\/([\w.]+)\/([\w.-_]+)/s).filter(Boolean);
   console.log(hostPath);
   if (hostPath[0] !== "cfworkerdemo") {
-    console.log(`Not cfworkerdemo path: $${path}`);
+    console.log(`Not cfworkerdemo path: ${path}`);
     return;
   }
   if (hostPath.length != 3) {
-    console.log(`Got invalid path: $${path}`);
+    console.log(`Got invalid path: ${path}`);
     return;
   }
 
   desiredHost = hostPath[1];
-  console.log(`desiredHost : $${desiredHost}`);
+  console.log(`desiredHost : ${desiredHost}`);
 
   desiredPath = hostPath[2];
-  console.log(`desiredPath : $${desiredPath}`);
+  console.log(`desiredPath : ${desiredPath}`);
 
-  const cacheKey = `https://$${url.hostname}$${url.pathname}`;
+  const cacheKey = `https://${url.hostname}${url.pathname}`;
 
-  console.log(`cache key : $${cacheKey}`);
+  console.log(`cache key : ${cacheKey}`);
 
-  const desiredUrl = new URL(desiredPath, `https://$${desiredHost}`);
+  const desiredUrl = new URL(desiredPath, `https://${desiredHost}`);
   const fetchUrl = desiredUrl.toString();
 
-  console.log(`fetch URL : $${fetchUrl}`);
+  console.log(`fetch URL : ${fetchUrl}`);
 
   const cacheTtl = 300;
 
